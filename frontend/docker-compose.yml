@@ -1,0 +1,25 @@
+services:
+  nodejs:
+    image: "node:24.11.1-bookworm"
+    container_name: nodejs-bookworm
+    # restart: always
+    user: "node"
+    working_dir: /home/node/app
+    # entrypoint: /bin/bash
+    environment:
+      - NODE_ENV=development
+    ports:
+      - 5173:5173 #vue
+    volumes:
+      - ./:/home/node/app
+    tty: true
+    # package.json "scripts": {"dev": "vite --host"}
+    # command: sh -c "npm install && npm run build"
+    # command: sh -c "npm install && npm run dev"
+    networks:
+      - nodejs-network
+
+networks:
+  nodejs-network:
+    driver: bridge
+

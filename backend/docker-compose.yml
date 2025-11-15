@@ -1,0 +1,48 @@
+services:
+    nginx-phpfpm:
+        container_name: nginx-phpfpm
+        build: .docker
+        ports:
+            - 8080:80
+        volumes:
+            - ./:/var/www/backend
+        networks:
+            - nginx_phpfpm_network
+    database:
+        image: mariadb:12.0.2-noble
+        container_name: mariadb-noble
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: root_pass
+            MYSQL_DATABASE: laravel
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin
+        networks:
+            - nginx_phpfpm_network
+    phpmyadmin:
+        image: phpmyadmin:5.2.3-apache
+        container_name: phpmyadmin-apache
+        restart: always
+        links:
+            - database
+        ports:
+            - 8086:80
+        environment:
+            PMA_HOST: database
+            PMA_USER: admin
+            PMA_PASSWORD: admin
+        networks:
+            - nginx_phpfpm_network
+
+networks:
+    nginx_phpfpm_network:
+        driver: bridge
+
+# ps aux
+# supervisorctl status
+
+# /etc/nginx/nginx.conf
+# /usr/local/etc/php-fpm.d/www.conf
+
+# docker logs nginx-phpfpm
+# docker exec -it --user www-data nginx-phpfpm bash
