@@ -15,3 +15,9 @@ php artisan config:publish cors
 composer require laravel/fortify
 php artisan fortify:install
 ```
+4.  Creating a Vue Application with Vue-Router and Axios
+```
+npm create vue@latest
+npm install
+npm i axios
+```
