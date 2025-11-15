@@ -21,3 +21,9 @@ npm create vue@latest
 npm install
 npm i axios
 ```
+5.  Настроить подключение к БД в .env
+6.  Накатить миграции:
+```
+php artisan migrate --seed
+```
+7. Реализация простой аутентификации
