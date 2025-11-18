@@ -6,6 +6,8 @@ services:
             - 8080:80
         volumes:
             - ./:/var/www/backend
+        environment:
+            RUN_MIGRATE: true
         networks:
             - nginx_phpfpm_network
     database:
