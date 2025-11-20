@@ -19,7 +19,7 @@ export default function useAuth() {
     }
   }
 
-const login = async (email, password) => {
+  const login = async (email, password) => {
     isLoading.value = true
     errorMessage.value = ''
     validationErrors.value = {}

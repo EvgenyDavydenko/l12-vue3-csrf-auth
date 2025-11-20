@@ -14,6 +14,7 @@ const handleLogout = async () => {
 <template>
   <nav class="nav">
     <div class="left">
+      <router-link to="/">Блог</router-link>
       <router-link to="/profile">Профиль</router-link>
       <router-link to="/login">Вход</router-link>
     </div>

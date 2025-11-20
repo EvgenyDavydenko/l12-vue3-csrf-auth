@@ -1,12 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginPage from '../views/LoginPage.vue'
 import ProfilePage from '../views/ProfilePage.vue'
+import HomePage from '../views/HomePage.vue'
+import PostShow from '../views/PostShow.vue'
 import useAuth from '../composables/useAuth'
 
 const { user } = useAuth()
 
 const routes = [
-  { path: '/', redirect: '/login' },
+  { path: '/', redirect: '/home' },
+  { path: '/home', component: HomePage },
+  { path: '/posts/:slug', component: PostShow },
   { path: '/login', component: LoginPage, meta: { guestOnly: true } },
   { path: '/profile', component: ProfilePage, meta: { requiresAuth: true } },
 ]
